@@ -45,6 +45,6 @@ class ORB:
 
 if __name__=='__main__':
     orb=ORB('../',50)
-    p=orb.compare_images(cv2.imread('D:/image_labelling/ref_images/tennis/backhand/1.png'),cv2.imread('D:/image_labelling/ref_images/tennis/backhand/1.png'))
+    p=orb.compare_images(cv2.imread('../ref_images/tennis/backhand/1.png'),cv2.imread('../ref_images/tennis/backhand/1.png'))
     print(p)
 
