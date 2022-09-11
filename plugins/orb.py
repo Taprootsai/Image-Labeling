@@ -6,7 +6,6 @@ class ORB:
     def __init__(self,model_path,threshold):
         # self.pe = PersonExtraction(model_path=model_path)
         self.threshold=threshold
-        pass
 
     def _extract_person(self,img_path):
         # racket,person,racket_mid,person_mid = self.pe.extract(img_path,0.75)
@@ -20,7 +19,7 @@ class ORB:
         keypointsB, descriptorB = detect.detectAndCompute(imageB,None)
         return (keypointsA,descriptorA,keypointsB,descriptorB)
     
-    def __Bf_mathcer(self, descA,descB):
+    def __bf_mathcer(self, descA,descB):
         matcher=cv2.BFMatcher(cv2.NORM_HAMMING,crossCheck=True)
         no_of_matches=matcher.match(descA,descB)
         most_similar_regions=[i for i in no_of_matches if i.distance<50]
@@ -37,7 +36,7 @@ class ORB:
         # imgB=cv2.imread(imageB)
     
         key_ptA,descA,key_ptB,descB=self.__detection(imageA,imageB)
-        no_of_matches ,orb_score = self.__Bf_mathcer(descA,descB)
+        no_of_matches ,orb_score = self.__bf_mathcer(descA,descB)
 
         # self.__display_output(imageA,key_ptA,imageB,key_ptB,no_of_matches)
 
