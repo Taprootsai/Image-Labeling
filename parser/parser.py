@@ -1,13 +1,8 @@
 import yaml
 import sys
-import importlib.util
-# spec  = importlib.util.spec_from_file_location('orb','D:/image_labelling/plugins/orb.py')
-# orb = importlib.util.module_from_spec(spec)
-# spec.loader.exec_module(orb)
-# print(orb.ORB())
 from yaml.loader import SafeLoader
-sys.path.append('/image_labelling/plugins')
-from orb import ORB
+sys.path.append('E:/Open source/Image-Labeling')
+from plugins.orb import ORB
 class Parser:
     def __init__(self):
         self.file_name='config.yaml'

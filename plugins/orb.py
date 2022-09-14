@@ -1,5 +1,8 @@
+import sys
+sys.path.append('E:/Open source/Image-Labeling')
+
 from email.mime import image
-from Helpers.person_extraction import PersonExtraction
+from plugins.Helpers.person_extraction import PersonExtraction
 
 import cv2
 class ORB:
