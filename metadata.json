@@ -1,0 +1,11 @@
+{
+    "plugins":[
+        "orb",
+        "ssim"
+    ],
+    "selection_algorithms":[
+        "highestMatch",
+        "majority",
+        "Individual"
+    ]
+}

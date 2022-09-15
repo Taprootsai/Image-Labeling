@@ -6,8 +6,8 @@ from plugins.Helpers.person_extraction import PersonExtraction
 
 import cv2
 class ORB:
-    def __init__(self,model_path,threshold):
-        # self.pe = PersonExtraction(model_path=model_path)
+    def __init__(self,threshold=0.75):
+        # self.pe = PersonExtraction(model_path='downloaded_models/yolo.h5)
         self.threshold=threshold
 
     def _extract_person(self,img_path):
@@ -18,6 +18,8 @@ class ORB:
         pass
     def __detection(self,imageA,imageB):
         detect = cv2.ORB_create()
+        imageA = cv2.imread(imageA)
+        imageB = cv2.imread(imageB)
         keypointsA, descriptorA = detect.detectAndCompute(imageA,None)
         keypointsB, descriptorB = detect.detectAndCompute(imageB,None)
         return (keypointsA,descriptorA,keypointsB,descriptorB)

@@ -6,17 +6,30 @@ import glob
 from cProfile import label
 import os
 import sys
-from Helpers.person_extraction import PersonExtraction
+from plugins.Helpers.person_extraction import PersonExtraction
 
-class Ssim:
-    def __init__(self,model_path):
-        self.pe = PersonExtraction(model_path=model_path)
+class SSIM:
+    def __init__(self):
+        self.pe = PersonExtraction(model_path='downloaded_models/yolo.h5')
 
     def _extract_person(self,img_path):
         racket,person,racket_mid,person_mid = self.pe.extract(img_path,0.75)
         # cv2.imshow("person",person)
         # cv2.waitKey()
         return person
+    
+    def _plot_graph(self, score, imageA, imageB):
+        fig = plt.figure("comaprision")
+        plt.title(f"ssim score: {score}")
+        ax = fig.add_subplot(1, 2, 1)
+        plt.imshow(imageA, cmap = plt.cm.gray)
+        plt.axis("off")
+
+        ax = fig.add_subplot(1, 2, 2)
+        plt.imshow(imageB, cmap = plt.cm.gray)
+        plt.axis("off")
+    
+        plt.show()
     
     def compare_images(self, imageA, imageB):
         # cv2_imshow(imageA)
@@ -29,18 +42,8 @@ class Ssim:
         imageA = cv2.resize(imageA, imageB.shape[::-1])
         # print(imageA.shape)
         # print(imageB.shape)
-        s = ssim(imageA, imageB,fullbool=True)
-        fig = plt.figure("comaprision")
-        plt.title(f"ssim score: {s}")
-        ax = fig.add_subplot(1, 2, 1)
-        plt.imshow(imageA, cmap = plt.cm.gray)
-        plt.axis("off")
-
-        ax = fig.add_subplot(1, 2, 2)
-        plt.imshow(imageB, cmap = plt.cm.gray)
-        plt.axis("off")
-    
-        plt.show()
-        return s
+        score = ssim(imageA, imageB,fullbool=True)
+        #_plot_graph(score, imageA, imageB)
+        return score
 
 
