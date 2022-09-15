@@ -32,6 +32,7 @@ class Algorithms:
     def get_plugins_scores(self):
         return self.plugin_scores        
     
+    #Creates plugin obj for given plugin name
     def _get_plugin_obj(self, class_name):
         return self.classes[class_name]()
           
