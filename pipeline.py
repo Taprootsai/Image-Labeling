@@ -34,6 +34,8 @@ if src_data_mode=="local":
         module_name = "selection_algorithms."+alg.selection_algorithms_available[selection_algorithm.lower()]["file_name"]            
         selection_class = getattr(importlib.import_module(module_name), class_name)
         
+        #TODO: Add support for scoring and bucketizing folder of test data(multiple test images maybe video)
+        
         res_obj = selection_class()
         individual_class_avg_scores = dict()
         for ref_class_folder in sorted(glob(ref_data_path)):
