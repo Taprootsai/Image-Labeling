@@ -1,10 +1,11 @@
 import sys
+
 sys.path.append('E:/Open source/Image-Labeling')
 
 from selection_algorithms.algorithms import Algorithms
 from selection_algorithms.highestMatch import HighestMatch
+from selection_algorithms.average import Average
 
-alg = Algorithms()
-alg.generate_scores('majority',['ssim','orb'])
-print(alg.get_plugins_scores())
+hm = Average()
+print(hm.get_res(['ssim','orb']))
 
