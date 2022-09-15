@@ -1,8 +1,9 @@
 import yaml
 import sys
-from yaml.loader import SafeLoader
-sys.path.append('E:/Open source/Image-Labeling')
-from plugins.orb import ORB
+
+# sys.path.append('E:/Open source/Image-Labeling')
+
+
 class Parser:
     def __init__(self):
         self.file_name='config.yaml'
@@ -12,8 +13,8 @@ class Parser:
             self.configuration = yaml.full_load(f)
         self.__initiate()
     def __initiate(self):
-        self.metrics = self.configuration['algorithm']
-        self.algos = self.configuration['matrix']
+        self.metrics = self.configuration['plugin']
+        self.algos = self.configuration['selection_algorithm']
 
     def get_config(self):
         # print(self.configuration)
@@ -27,10 +28,3 @@ class compute(Parser):
     def print(self):
         print(self.algos)
     
-
-
-if __name__=='__main__':
-    pr=Parser()
-    com=compute()
-    com.print()
-    pr.get_config()
