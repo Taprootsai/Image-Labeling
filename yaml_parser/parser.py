@@ -7,18 +7,21 @@ import sys
 class Parser:
     def __init__(self):
         self.file_name='config.yaml'
-
         with open('config.yaml') as f:
-
             self.configuration = yaml.full_load(f)
         self.__initiate()
+        
     def __initiate(self):
-        self.metrics = self.configuration['plugin']
-        self.algos = self.configuration['selection_algorithm']
+        self.plugins = self.configuration['plugin']
+        self.selection_algorithms = self.configuration['selection_algorithm']
+        self.src_data_mode = self.configuration['src_data_mode']
+        self.src_data_path = self.configuration['src_data_path']
+        self.ref_data_path = self.configuration['ref_data_path']
+        self.save_data_path = self.configuration['save_data_path']
 
     def get_config(self):
         # print(self.configuration)
-        # print(self.algos)
+        # print(self.selection_algorithms)
         return self.configuration
 
 class compute(Parser):
@@ -26,5 +29,5 @@ class compute(Parser):
         super().__init__()
         # self.configuration = 
     def print(self):
-        print(self.algos)
+        print(self.selection_algorithms)
     

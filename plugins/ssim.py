@@ -43,7 +43,7 @@ class SSIM:
         # print(imageA.shape)
         # print(imageB.shape)
         score = ssim(imageA, imageB,fullbool=True)
-        #_plot_graph(score, imageA, imageB)
+        self._plot_graph(score, imageA, imageB)
         return score
 
 

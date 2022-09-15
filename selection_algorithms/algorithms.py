@@ -1,5 +1,6 @@
 import sys
 import importlib
+import glob
 from plugins.ssim import SSIM
 from plugins.orb import ORB
 
@@ -23,14 +24,14 @@ class Algorithms:
         self.plugin_classes = dict()
         for i in self.plugins_available:
             self.plugin_classes[i] = getattr(sys.modules[__name__], i.upper())
-        print(self.plugin_classes)
+        # print(self.plugin_classes)
         
         self.selection_classes = dict()
         for i in self.selection_algorithms_available:
             class_name = self.selection_algorithms_available[i]["class_name"]
             module_name = "selection_algorithms."+self.selection_algorithms_available[i]["file_name"]            
             self.selection_classes[i] = getattr(importlib.import_module(module_name), class_name)
-        print(self.selection_classes)
+        # print(self.selection_classes)
         
     def get_plugins_available(self):
         return self.plugins_available
@@ -49,14 +50,23 @@ class Algorithms:
     def _get_selection_algorithm_obj(self, class_name):
         return self.selection_classes[class_name]()
     
-    def generate_scores(self, plugins):
+    def _get_individual_class_avg_score(self,plugin_obj, img_path, ref_img_path):
+        individual_class_avg_score = dict()
+        for individual_classes in sorted(glob.glob(ref_img_path+'/*')):
+            sum_=0
+            for images in sorted(glob.glob(individual_classes+'/*')):
+                sum_ += plugin_obj.compare_images(img_path, images)
+            individual_class_avg_score[individual_classes.split("/")[-1]] = sum_/len(glob.glob(individual_classes+'/*'))
+        return individual_class_avg_score
+    
+    def generate_scores(self, plugins,img_path, ref_img_path):
         #There can be many plugins but only one result selection algorithm
         if set(plugins).issubset(set(self.plugins_available)):
             print("\n\nplugin available.....Generating similarity scores\n\n")
-            for i in set(plugins):
-                j = self._get_plugin_obj(i)
-                scores = j.compare_images('ref_images/tennis/backhand/1.png','ref_images/tennis/serve/1.png')
-                self.plugin_scores[i] = scores
+            for individual_plugin in set(plugins):
+                plugin_obj = self._get_plugin_obj(individual_plugin)
+                scores = self._get_individual_class_avg_score(plugin_obj, img_path, ref_img_path)
+                self.plugin_scores[individual_plugin] = scores
         else:
             print("Plugin not available")
         return self.plugin_scores

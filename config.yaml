@@ -1,3 +1,7 @@
 ---
 plugin: ['orb','ssim']
-selection_algorithm : ['highestMatch','average']
+selection_algorithm : 'HighestMatch'
+src_data_mode : 'local'
+src_data_path : 'E:/Open source/Image-Labeling/test_data/*'
+ref_data_path : 'E:/Open source/Image-Labeling/ref_images/tennis/*'
+save_data_path : 'E:/Open source/Image-Labeling/buckets/tennis/*'
