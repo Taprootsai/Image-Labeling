@@ -18,6 +18,7 @@ class TEST(PLUGIN):
         print("hi")
         
     def compare_images(self):
+        #must implement this method in sub classes
         pass
 
 if __name__ == "__main__":

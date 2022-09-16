@@ -3,7 +3,6 @@ import sys
 from plugins.plugin import PLUGIN
 sys.path.append('E:/Open source/Image-Labeling')
 
-from email.mime import image
 from plugins.Helpers.person_extraction import PersonExtraction
 
 import cv2
@@ -32,9 +31,9 @@ class ORB(PLUGIN):
         most_similar_regions=[i for i in no_of_matches if i.distance<50]
         return most_similar_regions,len(most_similar_regions)/len(no_of_matches)
 
-    def __display_output(self,pic1,kpt1,pic2,kpt2,best_match):
-        output_image = cv2.drawMatches(pic1,kpt1,pic2,kpt2,best_match[:],None,flags=2)
-        cv2.imshow(output_image)
+    # def __display_output(self,pic1,kpt1,pic2,kpt2,best_match):
+    #     output_image = cv2.drawMatches(pic1,kpt1,pic2,kpt2,best_match[:],None,flags=2)
+    #     cv2.imshow(output_image)
     
     def compare_images(self, imageA, imageB):
         # cv2.imshow(imageA)
@@ -48,9 +47,4 @@ class ORB(PLUGIN):
         # self.__display_output(imageA,key_ptA,imageB,key_ptB,no_of_matches)
 
         return orb_score 
-
-if __name__=='__main__':
-    orb=ORB('../',50)
-    p=orb.compare_images(cv2.imread('../ref_images/tennis/backhand/1.png'),cv2.imread('../ref_images/tennis/backhand/1.png'))
-    print(p)
 

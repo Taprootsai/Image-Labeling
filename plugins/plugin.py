@@ -3,6 +3,7 @@ import abc
 
 class PLUGIN(metaclass=abc.ABCMeta):
     def __init__(self):
+        #constructor
         pass
     
     @abc.abstractclassmethod
