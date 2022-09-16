@@ -30,4 +30,4 @@ class HighestMatch(Algorithms):
             if avg[i] > highest_score:
                 highest_score = avg[i]
                 highest_class = i
-        return highest_class, highest_score
+        return highest_class.split("\\")[-1], highest_score

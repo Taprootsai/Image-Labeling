@@ -1,5 +1,6 @@
 import glob
 import sys
+import os
 import cv2
 import matplotlib.pyplot as plt
 import importlib
@@ -35,7 +36,13 @@ if src_data_mode=="local":
     for i in sorted(glob.glob(src_data_path+'/*')):
         # _plot_graph(cv2.imread(i))
            
-        #TODO: Add support for scoring and bucketizing folder of test data(multiple test images maybe video)
-        print(selection_obj.get_res(plugins, i, ref_data_path))
+        #TODO: Add support for bucketizing folder of test data(multiple test images maybe video)
+        bucket,score = selection_obj.get_res(plugins, i, ref_data_path)
+        
+        if not os.path.exists(save_data_path+"/"+bucket):
+            os.makedirs(save_data_path+"/"+bucket)
+        print("\n\n"+i.split("\\")[-1])
+        print("\n\n"+save_data_path)
+        cv2.imwrite(save_data_path+"/"+bucket+"/"+i.split("\\")[-1], cv2.imread(i))
         
         # print(selection_class)
