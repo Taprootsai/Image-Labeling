@@ -2,6 +2,6 @@
 plugin: ['orb','ssim']
 selection_algorithm : 'HighestMatch'
 src_data_mode : 'local'
-src_data_path : 'test_data/*'
-ref_data_path : 'ref_images/tennis/*'
+src_data_path : 'test_data'
+ref_data_path : 'ref_images/tennis'
 save_data_path : 'buckets/tennis/*'
