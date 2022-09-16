@@ -1,3 +1,4 @@
+import abc
 import sys
 import importlib
 import glob
@@ -8,7 +9,7 @@ sys.path.append('E:/Open source/Image-Labeling')
 
 import json
 
-class Algorithms:
+class Algorithms(metaclass=abc.ABCMeta):
     def __init__(self):
         #get available plugins
         metadata = json.load(open('metadata.json'))
@@ -64,13 +65,14 @@ class Algorithms:
         if set(plugins).issubset(set(self.plugins_available)):
             print("\n\nplugin available.....Generating similarity scores\n\n")
             for individual_plugin in set(plugins):
-                plugin_obj = self._get_plugin_obj(individual_plugin)
-                scores = self._get_individual_class_avg_score(plugin_obj, img_path, ref_img_path)
+                plugin_obj = self.__get_plugin_obj(individual_plugin)
+                scores = self.__get_individual_class_avg_score(plugin_obj, img_path, ref_img_path)
                 self.plugin_scores[individual_plugin] = scores
         else:
             print("Plugin not available")
         return self.plugin_scores
     
+    @abc.abstractmethod
     def get_res(self, plugins):
         #implement selection algorithm in subclasses
         pass

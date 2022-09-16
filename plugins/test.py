@@ -1,9 +1,10 @@
+import inspect
 import cv2
 import sys
-sys.path.append('E:/Open source/Image-Labeling')
+import abc
 
-from plugins.Helpers.person_extraction import PersonExtraction
-from ssim import SSIM
+sys.path.append('E:/Open source/Image-Labeling')
+from plugins.plugin import PLUGIN
 
 # pe = PersonExtraction("../downloaded_models/yolo.h5")
 # racket,person,racket_mid,person_mid = pe.extract("../ref_images/tennis/backhand/1.png",0.75)
@@ -12,5 +13,13 @@ from ssim import SSIM
 # cv2.imshow("racket",racket)
 # cv2.waitKey()
 
-s1 = SSIM(model_path="downloaded_models/yolo.h5")
-s1.compare_images("ref_images/tennis/backhand/1.png","ref_images/tennis/serve/1.png")
+class TEST(PLUGIN):
+    def __init__(self):
+        print("hi")
+        
+    def compare_images(self):
+        pass
+
+if __name__ == "__main__":
+    t = TEST()
+    t.compare_images("","")

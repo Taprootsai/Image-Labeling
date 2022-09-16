@@ -1,7 +1,11 @@
+import abc
 
-class PLUGIN:
+
+class PLUGIN(metaclass=abc.ABCMeta):
     def __init__(self):
         pass
+    
+    @abc.abstractclassmethod
     def compare_images(self,imageA,imageB):
-        raise NotImplementedError()
+        pass
 

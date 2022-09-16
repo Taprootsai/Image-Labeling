@@ -7,8 +7,9 @@ from cProfile import label
 import os
 import sys
 from plugins.Helpers.person_extraction import PersonExtraction
+from plugins.plugin import PLUGIN
 
-class SSIM:
+class SSIM(PLUGIN):
     def __init__(self):
         self.pe = PersonExtraction(model_path='downloaded_models/yolo.h5')
 

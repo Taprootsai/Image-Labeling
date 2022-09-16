@@ -7,10 +7,6 @@
         "highestmatch":{
             "class_name":"HighestMatch",
             "file_name":"highestMatch"
-        },               
-        "average":{
-            "class_name":"Average",
-            "file_name":"average"
         }
     }
 }

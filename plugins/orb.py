@@ -1,11 +1,13 @@
 import sys
+
+from plugins.plugin import PLUGIN
 sys.path.append('E:/Open source/Image-Labeling')
 
 from email.mime import image
 from plugins.Helpers.person_extraction import PersonExtraction
 
 import cv2
-class ORB:
+class ORB(PLUGIN):
     def __init__(self,threshold=0.75):
         # self.pe = PersonExtraction(model_path='downloaded_models/yolo.h5)
         self.threshold=threshold
