@@ -43,14 +43,14 @@ class Algorithms:
         return self.plugin_scores        
     
     #Creates plugin obj for given plugin name
-    def _get_plugin_obj(self, class_name):
+    def __get_plugin_obj(self, class_name):
         return self.plugin_classes[class_name]()
     
     #Creates selection algorithm obj for given selection algorithm name
-    def _get_selection_algorithm_obj(self, class_name):
+    def __get_selection_algorithm_obj(self, class_name):
         return self.selection_classes[class_name]()
     
-    def _get_individual_class_avg_score(self,plugin_obj, img_path, ref_img_path):
+    def __get_individual_class_avg_score(self,plugin_obj, img_path, ref_img_path):
         individual_class_avg_score = dict()
         for individual_classes in sorted(glob.glob(ref_img_path+'/*')):
             sum_=0
