@@ -1,6 +1,7 @@
 import sys
 import importlib
 import glob
+import abc
 from plugins.ssim import SSIM
 from plugins.orb import ORB
 
@@ -8,7 +9,7 @@ sys.path.append('E:/Open source/Image-Labeling')
 
 import json
 
-class Algorithms():
+class Algorithms(metaclass=abc.ABCMeta):	
     def __init__(self):
         #get available plugins
         metadata = json.load(open('metadata.json'))
@@ -71,6 +72,7 @@ class Algorithms():
             print("Plugin not available")
         return self.plugin_scores
     
-    def get_res(self, plugins):
+    @abc.abstractclassmethod
+    def get_res(self, plugins, img_path, ref_img_path):
         #implement selection algorithm in subclasses
         pass

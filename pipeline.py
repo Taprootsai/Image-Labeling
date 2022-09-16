@@ -4,6 +4,7 @@ import os
 import cv2
 import matplotlib.pyplot as plt
 import importlib
+import json
 
 from selection_algorithms.algorithms import Algorithms
 
@@ -22,6 +23,15 @@ class Pipeline:
         self.src_data_path = configuration['src_data_path']
         self.ref_data_path = configuration['ref_data_path']
         self.save_data_path = configuration['save_data_path']
+        
+        metadata = json.load(open('metadata.json'))
+        self.selection_algorithms_available = metadata.get('selection_algorithms')
+        
+        self.selection_classes = dict()
+        for i in self.selection_algorithms_available:
+            class_name = self.selection_algorithms_available[i]["class_name"]
+            module_name = "selection_algorithms."+self.selection_algorithms_available[i]["file_name"]            
+            self.selection_classes[i] = getattr(importlib.import_module(module_name), class_name)
 
     def _plot_graph(self,image):
         plt.imshow(image, cmap = plt.cm.gray)
@@ -30,9 +40,9 @@ class Pipeline:
 
     def start_bucketizing(self,):
         if self.src_data_mode=="local":
-            alg = Algorithms()
-            class_name = alg.selection_algorithms_available[self.selection_algorithm.lower()]['class_name']
-            module_name = "selection_algorithms."+alg.selection_algorithms_available[self.selection_algorithm.lower()]["file_name"]            
+            # alg = Algorithms()
+            class_name = self.selection_algorithms_available[self.selection_algorithm.lower()]['class_name']
+            module_name = "selection_algorithms."+self.selection_algorithms_available[self.selection_algorithm.lower()]["file_name"]            
             selection_class = getattr(importlib.import_module(module_name), class_name)
             selection_obj = selection_class()
             
