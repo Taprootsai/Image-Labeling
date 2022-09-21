@@ -6,7 +6,8 @@
     "selection_algorithms":{
         "highestmatch":{
             "class_name":"HighestMatch",
-            "file_name":"highestMatch"
+            "file_name":"highestMatch",
+            "description":""
         }
     }
 }
