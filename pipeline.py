@@ -24,7 +24,7 @@ class Pipeline:
         self.ref_data_path = configuration['ref_data_path']
         self.save_data_path = configuration['save_data_path']
         
-        metadata = json.load(open('metadata.json'))
+        metadata = json.load(open('.metadata.json'))
         self.selection_algorithms_available = metadata.get('selection_algorithms')
         
         self.selection_classes = dict()
