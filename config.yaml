@@ -1,7 +1,8 @@
 ---
-plugin: ['orb','ssim']
-selection_algorithm : 'HighestMatch'
-src_data_mode : 'local'
+plugin: ['orb','ssim']  #Algorithm to be used for generating similarity scores
+selection_algorithm : 'HighestMatch'  #This algorithm is used to classify the image to particular class using similarity scores of different plugins Highest Average Match: obtained by averaging over similarity score for different plugins for each class. From resulting scores the class with highest score is considered to be label fo that image
+src_data_mode : 'url'
+src_data_url : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.oun_JdJAfeVDKkjdv_X4rgHaE8%26pid%3DApi&f=1'        #URL to dowload image from (only of src_data_mode is not local)
 src_data_path : 'test_data'
 ref_data_path : 'ref_images/tennis'
 save_data_path : 'buckets/tennis'

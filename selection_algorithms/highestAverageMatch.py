@@ -3,7 +3,13 @@ sys.path.append('E:/Open source/Image-Labeling')
 import glob
 from selection_algorithms.algorithms import Algorithms
 
-class HighestMatch(Algorithms):
+'''
+This algorithm is used to classify the image to particular class using similarity scores of different plugins. one such algorithm is Highest Average Match,
+It is obtained by averaging over similarity score for different plugins for each class. From resulting scores the class with highest score is considered to be label fo that image.
+'''	
+
+
+class HighestAverageMatch(Algorithms):
     def __init__(self):
         super().__init__()
     
