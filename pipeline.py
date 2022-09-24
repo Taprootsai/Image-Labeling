@@ -45,8 +45,9 @@ class Pipeline:
     
     def _no_of_images_labeled(self):
         count = 0
-        for i in os.listdir(self.save_data_path):
-            count += len(os.listdir(self.save_data_path+"/"+i))        
+        if os.path.exists(self.save_data_path):
+            for i in os.listdir(self.save_data_path):
+                count += len(os.listdir(self.save_data_path+"/"+i))        
         return count 
     
     def _calculate_avg_mean_each_img(self,path):
@@ -65,14 +66,13 @@ class Pipeline:
             avg_mean_dict[str(i)] = 0
             class_sum =0 
             for images in os.listdir(self.ref_data_path+"/"+i):
-                print(images)
                 mean_of_curr_img = self._calculate_avg_mean_each_img(self.ref_data_path+"/"+i+"/"+images)
                 class_sum += mean_of_curr_img
             avg_mean_dict[str(i)] = class_sum/len(os.listdir(self.ref_data_path+"/"+i))
         return avg_mean_dict
     
     def _choose_population_for_oracle(self,start,avg_mean_dict):
-        for i in range(start,start+5):
+        for i in range(start-1,start+20):
             for labeled_data_domain in os.listdir(self.save_data_path):
                 # print(self.save_data_path+"/"+labeled_data_domain+"/"+str(i)+".png")
                 if os.path.isfile(self.save_data_path+"/"+labeled_data_domain+"/"+str(i)+".png"):
@@ -100,16 +100,15 @@ class Pipeline:
         selection_class = getattr(importlib.import_module(module_name), class_name)
         selection_obj = selection_class()
         
-        no_of_images_labeled = 0
         start = self._no_of_images_labeled()
-        image_name = start
+        image_name=start
+        no_of_images_labeled = start
         avg_mean_dict = self._calculate_avg_mean()
-        self._choose_population_for_oracle(0,avg_mean_dict)
-        '''
+
         for i in sorted(glob.glob(self.src_data_path+'/*')):
             # _plot_graph(cv2.imread(i))
             
-            if(no_of_images_labeled%100==0 and no_of_images_labeled!=0):
+            if(no_of_images_labeled%20==0 and no_of_images_labeled!=0):
                 self._choose_population_for_oracle(start,avg_mean_dict)
             
             
@@ -122,6 +121,3 @@ class Pipeline:
             image_name+=1
             no_of_images_labeled += 1
             start+=1
-            # print(selection_class)
-        '''
-        
