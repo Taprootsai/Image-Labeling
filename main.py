@@ -1,9 +1,8 @@
-# from pipeline import Pipeline
-import argparse
-# from ast import parse
+from pipeline import Pipeline
 import sys
 import json
 def parse_metadata():
+
     metadata = json.load(open('metadata.json'))
     available_algorithms = 'Available plugins:\n'
     output = available_algorithms

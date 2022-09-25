@@ -5,7 +5,6 @@ import cv2
 import matplotlib.pyplot as plt
 import importlib
 import json
-
 from selection_algorithms.algorithms import Algorithms
 
 sys.path.append('E:/Open source/Image-Labeling')

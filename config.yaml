@@ -5,3 +5,7 @@ src_data_mode : 'local'
 src_data_path : 'test_data'
 ref_data_path : 'ref_images/tennis'
 save_data_path : 'buckets/tennis'
+confidence_level : 80
+margin_of_error : 0.1
+
+
