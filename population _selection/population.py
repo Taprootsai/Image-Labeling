@@ -37,11 +37,12 @@ class PopulationSelection(Parser):
         return False,input_class
 
 
-    def determine(self,correct,image):
+    def determine(self,correct,image,label):
         if correct:
-            dest_path=self.save_data_path
+            dest_path=self.save_data_path + '/' + label
         else:
-            dest_path = self.ref_data_path
+            dest_path = self.ref_data_path + '/' + label
+            
         shutil.move(image,dest_path)
         
 

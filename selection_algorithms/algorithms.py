@@ -12,7 +12,7 @@ import json
 class Algorithms(metaclass=abc.ABCMeta):	
     def __init__(self):
         #get available plugins
-        metadata = json.load(open('metadata.json'))
+        metadata = json.load(open('.metadata.json'))
         self.plugins_available = metadata.get('plugins')
         self.selection_algorithms_available = metadata.get('selection_algorithms')
 
