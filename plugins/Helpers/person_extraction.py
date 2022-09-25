@@ -16,7 +16,7 @@ raw_img_width = 1920
 
 class PersonExtraction:
     #constructor of the class
-    def __init__(self, model_path):
+    def __init__(self, model_path="downloaded_models/yolo.h5"):
         self.detector = ObjectDetection() 
         self.detector.setModelTypeAsYOLOv3()
         self.detector.setModelPath(model_path)

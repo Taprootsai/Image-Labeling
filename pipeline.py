@@ -3,7 +3,6 @@ import glob
 from itertools import count
 import sys
 import os
-from tkinter import image_names
 import cv2
 import matplotlib.pyplot as plt
 import importlib
