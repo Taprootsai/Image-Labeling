@@ -6,3 +6,5 @@ src_data_url : #'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse
 src_data_path : 'test_data' #Folder name where images that need to be labeled are stored
 ref_data_path : 'ref_images/tennis' #Path for reference images to calculate similarity scores for each class
 save_data_path : 'buckets/tennis' #Path where newly labeled images from src_data_path should be stored
+confidence_level : 80
+margin_of_error : 0.1

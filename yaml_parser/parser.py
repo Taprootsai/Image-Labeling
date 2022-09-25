@@ -19,6 +19,8 @@ class Parser:
         self.ref_data_path = self.configuration['ref_data_path']
         self.save_data_path = self.configuration['save_data_path']
         self.src_data_url = self.configuration['src_data_url']
+        self.confidence_level = self.configuration['confidence_level']
+        self.margin_of_error = self.configuration['margin_of_error']
 
     def get_config(self):
         # print(self.configuration)
