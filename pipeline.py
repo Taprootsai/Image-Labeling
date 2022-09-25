@@ -1,13 +1,10 @@
-from genericpath import isfile
 import glob
-from itertools import count
 import sys
 import os
 import cv2
 import matplotlib.pyplot as plt
 import importlib
 import json
-import urllib.request
 
 from selection_algorithms.algorithms import Algorithms
 import urllib
