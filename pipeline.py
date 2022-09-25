@@ -3,7 +3,6 @@ import glob
 from itertools import count
 import sys
 import os
-from tkinter import image_names
 import cv2
 import matplotlib.pyplot as plt
 import importlib
@@ -11,7 +10,7 @@ import json
 import urllib.request
 
 from selection_algorithms.algorithms import Algorithms
-
+import urllib
 sys.path.append('E:/Open source/Image-Labeling')
 
 from yaml_parser.parser import Parser
