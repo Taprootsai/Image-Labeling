@@ -7,8 +7,11 @@ import cv2
 import matplotlib.pyplot as plt
 import importlib
 import json
+<<<<<<< HEAD
+=======
 import urllib.request
 
+>>>>>>> c383312ce61b1a197caf9ac7c942e33c29c970f5
 from selection_algorithms.algorithms import Algorithms
 
 sys.path.append('E:/Open source/Image-Labeling')

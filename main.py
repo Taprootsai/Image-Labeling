@@ -1,6 +1,4 @@
-# from pipeline import Pipeline
-import argparse
-# from ast import parse
+from pipeline import Pipeline
 import sys
 import json
 from pipeline import Pipeline
