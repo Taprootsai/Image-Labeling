@@ -40,13 +40,17 @@ Similarly this can be used for image labeling tasks in other domains too.
 ## prerequisites
 This tool requires python version of 3.8x and corresponding pip version. Use GPU for faster execution.
 ## Installation
-<li>Step 1 : clone the repository
+<li>Step 1 : Clone the repository
 
 `git clone https://github.com/AdityaVSM/Image-Labeling` </li>
 
-<li>step 2 : Install requirements 
+<li>Step 2 : Change directory
 
-`pip install requirements.txt`</li>
+`cd Image-Labeling` </li>
+
+<li>Step 3 : Install requirements 
+
+`pip3 install -r requirements.txt`</li>
 
 # Usage
 <li>Step 1: After installing the Required libraries,to view the supported plugins and algorithms use the below command 
