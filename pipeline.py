@@ -110,10 +110,11 @@ class Pipeline:
             
             bucket,score = selection_obj.get_res(self.plugins, i, self.ref_data_path)
             
-            if not os.path.exists(self.save_data_path+"/"+bucket):
-                os.makedirs(self.save_data_path+"/"+bucket)
-            if not os.path.exists(self.save_data_path+"/"+bucket+"/"+str(image_name)+".png"):
-                cv2.imwrite(self.save_data_path+"/"+bucket+"/"+str(image_name)+".png", cv2.imread(i))
-            image_name+=1
-            no_of_images_labeled += 1
-            start+=1
+            if score != 0.0:
+                if not os.path.exists(self.save_data_path+"/"+bucket):
+                    os.makedirs(self.save_data_path+"/"+bucket)
+                if not os.path.exists(self.save_data_path+"/"+bucket+"/"+str(image_name)+".png"):
+                    cv2.imwrite(self.save_data_path+"/"+bucket+"/"+str(image_name)+".png", cv2.imread(i))
+                image_name+=1
+                no_of_images_labeled += 1
+                start+=1

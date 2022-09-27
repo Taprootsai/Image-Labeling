@@ -1,7 +1,8 @@
 {
     "plugins":[
         "orb",
-        "ssim"
+        "ssim",
+        "left_right"
     ],
     "selection_algorithms":{
         "highestmatch":{

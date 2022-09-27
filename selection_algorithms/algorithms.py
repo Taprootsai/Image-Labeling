@@ -4,8 +4,8 @@ import glob
 import abc
 from plugins.ssim import SSIM
 from plugins.orb import ORB
+from plugins.left_right import LEFT_RIGHT
 
-sys.path.append('E:/Open source/Image-Labeling')
 
 import json
 
@@ -18,8 +18,6 @@ class Algorithms(metaclass=abc.ABCMeta):
 
         #To store plugin results
         self.plugin_scores = dict()
-        for i in self.plugins_available:
-            self.plugin_scores[i] = 1
         
         #Mapping between plugin names (str) to respective class  
         self.plugin_classes = dict()

@@ -28,7 +28,7 @@ class PersonExtraction:
     
     def _read_img(self,raw_img):    
         raw_img = cv2.imread(raw_img)                                                                            
-        raw_img = cv2.resize(raw_img, (raw_img_width, raw_img_height))[540:1080,:]                                  ###image is directly provider remove the imagepath
+        raw_img = cv2.resize(raw_img, (raw_img_width, raw_img_height))[540:1080]                                  ###image is directly provider remove the imagepath
         return raw_img
     
     def _detect(self,raw_img, min_percent):
