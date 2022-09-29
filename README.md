@@ -55,7 +55,7 @@ This tool requires python version of 3.8x and corresponding pip version. Use GPU
 # Usage
 <li>Step 1: After installing the Required libraries,to view the supported plugins and algorithms use the below command 
 
-`python run.py --help`
+`python main.py --help`
 
 
 <li>Step 2: When the repository is cloned config.ymal file is downloaded.
