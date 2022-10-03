@@ -42,7 +42,7 @@ This tool requires python version of 3.8x and corresponding pip version. Use GPU
 ## Installation
 <li>Step 1 : clone the repository
 
-`git clone https://github.com/AdityaVSM/Image-Labeling` </li>
+`git clone https://github.com/Taprootsai/Image-Labeling.git` </li>
 
 <li>step 2 : Install requirements 
 
